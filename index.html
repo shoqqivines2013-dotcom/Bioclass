@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BioClass — 8-sinf biologiya</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <span>🧬</span>
+        <div>
+          <h1>BioClass</h1>
+          <small>8-sinf Biologiya</small>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Bosh sahifa</a>
+        <a href="#topics">Mavzular</a>
+        <a href="#tests">Testlar</a>
+        <a href="#games">O‘yinlar</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-text">
+          <span class="badge">8-SINF BIOLOGIYA</span>
+          <h2>
+            Inson organizmini<br /><strong>birga o‘rganamiz!</strong>
+            <p>Shohrux tomonidan!</p>
+          </h2>
+
+          <p>
+            Biologiyani oson, tushunarli va qiziqarli tarzda o‘rganing.
+            Mavzularni o‘qing, testlarni ishlang va bilimlaringizni o‘yinlarda
+            sinang.
+          </p>
+
+          <div class="hero-buttons">
+            <button onclick="goTo('topics')" class="primary-btn">
+              📚 Mavzularni boshlash
+            </button>
+
+            <button onclick="goTo('tests')" class="secondary-btn">
+              🧠 Test ishlash
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="dna">🧬</div>
+          <h3>BioClass</h3>
+          <p>Bilim → Test → O‘yin → Natija</p>
+
+          <div class="mini-stats">
+            <div>
+              <b id="topicCount">0</b>
+              <span>Mavzu</span>
+            </div>
+            <div>
+              <b>13</b>
+              <span>Bob</span>
+            </div>
+            <div>
+              <b>∞</b>
+              <span>Bilim</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="topics" class="section">
+        <div class="section-title">
+          <span>📖</span>
+          <div>
+            <h2>Biologiya mavzulari</h2>
+            <p>Kerakli mavzuni tanlang va batafsil o‘rganing.</p>
+          </div>
+        </div>
+
+        <div class="search-box">
+          🔍
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Mavzuni qidiring..."
+            oninput="searchTopics()"
+          />
+        </div>
+
+        <div id="chapters"></div>
+      </section>
+
+      <section id="tests" class="section tests-section">
+        <div class="section-title">
+          <span>🧠</span>
+          <div>
+            <h2>Bilimingizni sinang</h2>
+            <p>Mavzuga mos testni tanlang.</p>
+          </div>
+        </div>
+
+        <div id="testTopics" class="test-grid"></div>
+      </section>
+
+      <section id="games" class="section">
+        <div class="section-title">
+          <span>🎮</span>
+          <div>
+            <h2>Biologik o‘yinlar</h2>
+            <p>O‘ynab turib biologiyani mustahkamlang.</p>
+          </div>
+        </div>
+
+        <div class="games-grid">
+          <div class="game-card">
+            <div class="game-icon">🧩</div>
+            <h3>Organni top</h3>
+            <p>Berilgan vazifaga mos organni toping.</p>
+            <button class="game-btn" onclick="openGame('organ')">
+              O‘yinni boshlash →
+            </button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">🔬</div>
+            <h3>Hujayrani top</h3>
+            <p>Hujayra qismlarini to‘g‘ri aniqlang.</p>
+            <button class="game-btn" onclick="openGame('cell')">
+              O‘yinni boshlash →
+            </button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">⚡</div>
+            <h3>Tezkor biolog</h3>
+            <p>Vaqt ichida imkon qadar ko‘p savolga javob bering.</p>
+            <button class="game-btn" onclick="openGame('quick')">
+              O‘yinni boshlash →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="about">
+        <div>
+          <span class="badge">BIOCLASS</span>
+          <h2>O‘rganing. Tekshiring. Rivojlaning.</h2>
+          <p>
+            Sayt 8-sinf biologiya mavzularini tartibli o‘rganish, test ishlash
+            va interaktiv mashqlar orqali bilimni mustahkamlash uchun
+            yaratilgan.
+          </p>
+        </div>
+
+        <div class="about-icons">
+          <span>🧬</span>
+          <span>🫀</span>
+          <span>🧠</span>
+          <span>🫁</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <strong>🧬 BioClass</strong>
+        <p>8-sinf biologiya o‘quv platformasi</p>
+      </div>
+
+      <p>© 2026 BioClass</p>
+    </footer>
+
+    <!-- MAVZU OYNASI -->
+    <div id="topicModal" class="modal">
+      <div class="modal-content topic-modal">
+        <button class="close-btn" onclick="closeTopic()">×</button>
+
+        <div id="topicModalBody"></div>
+      </div>
+    </div>
+
+    <!-- TEST OYNASI -->
+    <div id="testModal" class="modal">
+      <div class="modal-content test-modal">
+        <button class="close-btn" onclick="closeTest()">×</button>
+
+        <div id="testBody"></div>
+      </div>
+    </div>
+
+    <!-- O‘YIN OYNASI -->
+    <div id="gameModal" class="modal">
+      <div class="modal-content game-modal">
+        <button class="close-btn" onclick="closeGame()">×</button>
+
+        <div id="gameBody"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
